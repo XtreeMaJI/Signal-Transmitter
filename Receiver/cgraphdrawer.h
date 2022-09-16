@@ -6,13 +6,16 @@
 #include <QChartView>
 #include <QLineSeries>
 #include <QTimer>
+#include <QSplineSeries>
 
 #define MILLISECONDS_IN_SECOND 1000
 #define MAX_POINTS_IN_SERIES 2400
 #define DELETING_POINTS_COUNT 100
-#define MAX_AMOUNT_SECONDS_ON_SCREEN 5 //Максимальный интервал по оси У, который можем показать на графике
+#define MAX_AMOUNT_SECONDS_ON_SCREEN 8 //Максимальный интервал по оси У, который можем показать на графике
+#define VALUES_OF_TIME_SLIDER 10000
 #define MAX_AMPL_ON_SCREEN 10 //Максимальный масштаб по оси Х
 #define POINTS_IN_AMPL_UNIT 1000
+#define VALUES_OF_AMPL_SLIDER 10000
 
 class CGraphDrawer
 {
@@ -35,7 +38,7 @@ public:
 
 private:
     QChart* chart;
-    QLineSeries* series;
+    QSplineSeries* series;
 
     double visibleRangeX; //Интервал времени в секундах, который виден на графике
     double visibleRangeY;

@@ -5,7 +5,7 @@ CGraphDrawer::CGraphDrawer() :
     visibleRangeY(1)
 {
     chart = new QChart();
-    series = new QLineSeries();
+    series = new QSplineSeries();
 
     QPen pen;
     pen.setWidth(3);

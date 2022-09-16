@@ -38,10 +38,11 @@ void MainWindow::on_connectBtn_clicked()
 void MainWindow::on_timeSlider_sliderMoved(int position)
 {
     double value = ui->timeSlider->maximum() - position;
+    value /= VALUES_OF_TIME_SLIDER;
     if(value == 0)
-        value = 1;
+        return;
 
-    double rangeX = double(value) / double(MILLISECONDS_IN_SECOND);
+    double rangeX = double(value) * double(MAX_AMOUNT_SECONDS_ON_SCREEN);
     graphDrawer->setVisibleRangeX(rangeX);
 }
 
@@ -49,10 +50,11 @@ void MainWindow::on_timeSlider_sliderMoved(int position)
 void MainWindow::on_amplSlider_sliderMoved(int position)
 {
     double value = ui->amplSlider->maximum() - position;
+    value /= VALUES_OF_AMPL_SLIDER;
     if(value == 0)
-        value = 1;
+        return;
 
-    double rangeY = double(value) / double(POINTS_IN_AMPL_UNIT);
+    double rangeY = double(value) * double(MAX_AMPL_ON_SCREEN);
     graphDrawer->setVisibleRangeY(rangeY);
 }
 

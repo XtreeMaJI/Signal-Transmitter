@@ -8,7 +8,7 @@
 
 #define TIMER_INTERVAL 50 //Интервал между срабатываниями таймера в миллисекундах
 #define MILLISECONDS_IN_SECOND 1000
-#define POINTS_INTERVAL 5 //Интервал по оси Х между точками на графике
+#define POINTS_INTERVAL 10 //Интервал по оси Х между точками на графике
 
 class CSignalGenerator : public QObject
 {
