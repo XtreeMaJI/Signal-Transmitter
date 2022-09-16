@@ -62,3 +62,16 @@ void MainWindow::on_disconnectBtn_clicked()
     networkReceiver->disconnectFromServer();
 }
 
+void MainWindow::resizeEvent(QResizeEvent *event)
+{
+    QRect newFrameGeom = this->geometry();
+
+    newFrameGeom.setX(100);
+    newFrameGeom.setY(0);
+    newFrameGeom.setWidth(newFrameGeom.width() - 550);
+    newFrameGeom.setHeight(newFrameGeom.height() - 300);
+
+    ui->graphFrame->setGeometry(newFrameGeom);
+    chartView->setGeometry(ui->graphFrame->geometry());
+}
+

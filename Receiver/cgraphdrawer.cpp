@@ -70,6 +70,9 @@ QChart *CGraphDrawer::getChart()
 
 void CGraphDrawer::updateChartRanges()
 {
+    if(series->points().isEmpty())
+        return;
+
     double timeInSeconds = series->points().constLast().x();
     chart->axes(Qt::Horizontal).constFirst()->setRange(timeInSeconds-visibleRangeX, timeInSeconds);
     chart->axes(Qt::Vertical).constFirst()->setRange(-visibleRangeY, visibleRangeY);

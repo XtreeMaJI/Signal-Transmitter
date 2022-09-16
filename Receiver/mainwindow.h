@@ -18,6 +18,7 @@ public:
 
     void addPointToChart(double time, double value);
 
+    virtual void resizeEvent(QResizeEvent *event);
 private:
     void initUi();
 

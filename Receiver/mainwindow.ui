@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
+    <width>834</width>
     <height>600</height>
    </rect>
   </property>
@@ -20,118 +20,13 @@
    <string>MainWindow</string>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <widget class="QLineEdit" name="ipLineEdit">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>50</y>
-      <width>113</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>192.168.0.195</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="ipLabel">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>20</y>
-      <width>71</width>
-      <height>16</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>IP address</string>
-    </property>
-   </widget>
-   <widget class="QSlider" name="timeSlider">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>160</y>
-      <width>111</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="minimum">
-     <number>0</number>
-    </property>
-    <property name="maximum">
-     <number>10000</number>
-    </property>
-    <property name="singleStep">
-     <number>1</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-   </widget>
-   <widget class="QLabel" name="timeLabel">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>120</y>
-      <width>121</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Time scale</string>
-    </property>
-   </widget>
-   <widget class="QLabel" name="amplLabel">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>200</y>
-      <width>121</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>12</pointsize>
-     </font>
-    </property>
-    <property name="text">
-     <string>Amplitude scale</string>
-    </property>
-   </widget>
-   <widget class="QSlider" name="amplSlider">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>240</y>
-      <width>111</width>
-      <height>21</height>
-     </rect>
-    </property>
-    <property name="maximum">
-     <number>10000</number>
-    </property>
-    <property name="orientation">
-     <enum>Qt::Horizontal</enum>
-    </property>
-   </widget>
    <widget class="QFrame" name="graphFrame">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>10</y>
+      <x>155</x>
+      <y>12</y>
       <width>650</width>
-      <height>550</height>
+      <height>525</height>
      </rect>
     </property>
     <property name="minimumSize">
@@ -147,31 +42,100 @@
      <enum>QFrame::Raised</enum>
     </property>
    </widget>
-   <widget class="QPushButton" name="connectBtn">
+   <widget class="QWidget" name="">
     <property name="geometry">
      <rect>
-      <x>10</x>
-      <y>70</y>
-      <width>101</width>
-      <height>24</height>
+      <x>14</x>
+      <y>14</y>
+      <width>135</width>
+      <height>224</height>
      </rect>
     </property>
-    <property name="text">
-     <string>Connect to server</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="disconnectBtn">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>100</y>
-      <width>101</width>
-      <height>24</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Disconnect</string>
-    </property>
+    <layout class="QVBoxLayout" name="verticalLayout">
+     <item>
+      <widget class="QLabel" name="ipLabel">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>IP address</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="ipLineEdit">
+       <property name="text">
+        <string>192.168.0.195</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="connectBtn">
+       <property name="text">
+        <string>Connect to server</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="disconnectBtn">
+       <property name="text">
+        <string>Disconnect</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="timeLabel">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Time scale</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSlider" name="timeSlider">
+       <property name="minimum">
+        <number>0</number>
+       </property>
+       <property name="maximum">
+        <number>10000</number>
+       </property>
+       <property name="singleStep">
+        <number>1</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QLabel" name="amplLabel">
+       <property name="font">
+        <font>
+         <pointsize>12</pointsize>
+        </font>
+       </property>
+       <property name="text">
+        <string>Amplitude scale</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QSlider" name="amplSlider">
+       <property name="maximum">
+        <number>10000</number>
+       </property>
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -179,7 +143,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>834</width>
      <height>22</height>
     </rect>
    </property>
