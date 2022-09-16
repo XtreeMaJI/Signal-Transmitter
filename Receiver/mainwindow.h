@@ -8,6 +8,11 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
+#define GRAPH_RIGHT_BORDER_INDENT 100
+#define GRAPH_LEFT_BORDER_INDENT 200
+#define AMPL_SCROLL_RIGHT_BORDER_INDENT 88
+#define AMPL_SCROLL_WIDTH 22
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT

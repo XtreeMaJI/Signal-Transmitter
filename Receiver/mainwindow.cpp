@@ -78,15 +78,24 @@ void MainWindow::on_disconnectBtn_clicked()
 
 void MainWindow::resizeEvent(QResizeEvent *event)
 {
-    QRect newFrameGeom = this->geometry();
+    QRect mainWinGeom = this->geometry();
+    QRect graphGeom;
 
-    newFrameGeom.setX(100);
-    newFrameGeom.setY(0);
-    newFrameGeom.setWidth(newFrameGeom.width() - 550);
-    newFrameGeom.setHeight(newFrameGeom.height() - 300);
+    graphGeom.setX(GRAPH_RIGHT_BORDER_INDENT);
+    graphGeom.setY(0);
+    graphGeom.setWidth(mainWinGeom.width() - GRAPH_LEFT_BORDER_INDENT);
+    graphGeom.setHeight(mainWinGeom.height());
 
-    ui->graphFrame->setGeometry(newFrameGeom);
+    QRect newAmplScrollSliderGeom;
+    newAmplScrollSliderGeom.setX(mainWinGeom.width() - 66);
+    newAmplScrollSliderGeom.setY(0);
+    newAmplScrollSliderGeom.setWidth(AMPL_SCROLL_WIDTH);
+    newAmplScrollSliderGeom.setHeight(mainWinGeom.height());
+
+    ui->graphFrame->setGeometry(graphGeom);
     chartView->setGeometry(ui->graphFrame->geometry());
+
+    ui->amplScrollSlider->setGeometry(newAmplScrollSliderGeom);
 }
 
 
