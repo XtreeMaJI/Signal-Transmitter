@@ -28,5 +28,8 @@ private:
 
 private slots:
     void on_connectBtn_clicked();
+    void on_timeSlider_sliderMoved(int position);
+    void on_amplSlider_sliderMoved(int position);
+    void on_disconnectBtn_clicked();
 };
 #endif // MAINWINDOW_H

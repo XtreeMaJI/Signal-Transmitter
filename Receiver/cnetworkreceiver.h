@@ -17,6 +17,8 @@ public:
     void connectToServer(QString Ip);
     void setGraphDrawer(CGraphDrawer* newGraphDrawer);
 
+    void disconnectFromServer();
+
 private:
     QTcpSocket* socket;
     CGraphDrawer* graphDrawer;

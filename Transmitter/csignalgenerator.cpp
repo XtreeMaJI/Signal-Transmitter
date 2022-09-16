@@ -56,7 +56,7 @@ void CSignalGenerator::onTimerUpdate()
     QByteArray signalData;
     signalData.clear();
 
-    for(int i = 0; i < TIMER_INTERVAL; i+=5)
+    for(int i = 0; i < TIMER_INTERVAL; i+=POINTS_INTERVAL)
     {
         signalVal = getSignalAtTime(timePassed + i);
         signalData.append(QByteArray::number(timePassed + i));

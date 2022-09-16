@@ -22,12 +22,16 @@ void CNetworkReceiver::connectToServer(QString serverIp)
 
     connect(socket, SIGNAL(readyRead()), this, SLOT(onReadyRead()));
     connect(socket, SIGNAL(disconnected()), this, SLOT(onDisconnect()));
-
 }
 
 void CNetworkReceiver::setGraphDrawer(CGraphDrawer *newGraphDrawer)
 {
     graphDrawer = newGraphDrawer;
+}
+
+void CNetworkReceiver::disconnectFromServer()
+{
+    socket->disconnect();
 }
 
 void CNetworkReceiver::onReadyRead()

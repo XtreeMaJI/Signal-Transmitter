@@ -32,8 +32,8 @@ void CGraphDrawer::addPointToChart(double time, double value)
     double timeInSeconds = time / MILLISECONDS_IN_SECOND;
 
     series->append(timeInSeconds, value);
-    chart->axes(Qt::Horizontal).first()->setRange(timeInSeconds-visibleRangeX, timeInSeconds);
-    chart->axes(Qt::Vertical).first()->setRange(-visibleRangeY, visibleRangeY);
+    chart->axes(Qt::Horizontal).constFirst()->setRange(timeInSeconds-visibleRangeX, timeInSeconds);
+    chart->axes(Qt::Vertical).constFirst()->setRange(-visibleRangeY, visibleRangeY);
 
     if(series->points().size() > MAX_POINTS_IN_SERIES)
     {
@@ -41,7 +41,36 @@ void CGraphDrawer::addPointToChart(double time, double value)
     }
 }
 
+void CGraphDrawer::setVisibleRangeX(double rangeX)
+{
+    visibleRangeX = rangeX;
+    updateChartRanges();
+}
+
+void CGraphDrawer::setVisibleRangeY(double rangeY)
+{
+    visibleRangeY = rangeY;
+    updateChartRanges();
+}
+
+double CGraphDrawer::getVisibleRangeX()
+{
+    return visibleRangeX;
+}
+
+double CGraphDrawer::getVisibleRangeY()
+{
+    return visibleRangeY;
+}
+
 QChart *CGraphDrawer::getChart()
 {
     return chart;
+}
+
+void CGraphDrawer::updateChartRanges()
+{
+    double timeInSeconds = series->points().constLast().x();
+    chart->axes(Qt::Horizontal).constFirst()->setRange(timeInSeconds-visibleRangeX, timeInSeconds);
+    chart->axes(Qt::Vertical).constFirst()->setRange(-visibleRangeY, visibleRangeY);
 }
