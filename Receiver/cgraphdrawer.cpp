@@ -84,3 +84,25 @@ void CGraphDrawer::setPenWidth(int width)
     newPen.setWidth(width);
     series->setPen(newPen);
 }
+
+void CGraphDrawer::setPenColorComponent(EPenColorComponent comp, int value)
+{
+    QPen newPen = series->pen();
+    QColor newColor = newPen.color();
+    switch(comp)
+    {
+        case EPenColorComponent::red:
+            newColor.setRed(value);
+            break;
+        case EPenColorComponent::green:
+            newColor.setGreen(value);
+            break;
+        case EPenColorComponent::blue:
+            newColor.setBlue(value);
+            break;
+        default:
+            break;
+    }
+    newPen.setColor(newColor);
+    series->setPen(newPen);
+}

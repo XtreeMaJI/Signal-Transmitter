@@ -81,3 +81,21 @@ void MainWindow::on_penSlider_sliderMoved(int position)
     graphDrawer->setPenWidth(position);
 }
 
+
+void MainWindow::on_penColorRedSlider_sliderMoved(int position)
+{
+    graphDrawer->setPenColorComponent(CGraphDrawer::red, position);
+}
+
+
+void MainWindow::on_penColorGreenSlider_sliderMoved(int position)
+{
+    graphDrawer->setPenColorComponent(CGraphDrawer::green, position);
+}
+
+
+void MainWindow::on_penColorBlueSlider_sliderMoved(int position)
+{
+    graphDrawer->setPenColorComponent(CGraphDrawer::blue, position);
+}
+

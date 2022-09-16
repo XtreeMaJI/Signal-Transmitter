@@ -20,6 +20,13 @@
 class CGraphDrawer
 {
 public:
+    enum EPenColorComponent
+    {
+        red,
+        green,
+        blue
+    };
+public:
     CGraphDrawer();
     ~CGraphDrawer();
     void init();
@@ -37,6 +44,8 @@ public:
     void updateChartRanges();
 
     void setPenWidth(int width);
+
+    void setPenColorComponent(EPenColorComponent comp, int value);
 
 private:
     QChart* chart;

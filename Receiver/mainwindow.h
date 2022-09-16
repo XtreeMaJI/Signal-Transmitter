@@ -33,5 +33,8 @@ private slots:
     void on_amplSlider_sliderMoved(int position);
     void on_disconnectBtn_clicked();
     void on_penSlider_sliderMoved(int position);
+    void on_penColorRedSlider_sliderMoved(int position);
+    void on_penColorGreenSlider_sliderMoved(int position);
+    void on_penColorBlueSlider_sliderMoved(int position);
 };
 #endif // MAINWINDOW_H
