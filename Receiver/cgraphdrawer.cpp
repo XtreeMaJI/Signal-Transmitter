@@ -34,6 +34,11 @@ void CGraphDrawer::addPointToChart(double time, double value)
     series->append(timeInSeconds, value);
     chart->axes(Qt::Horizontal).first()->setRange(timeInSeconds-visibleRangeX, timeInSeconds);
     chart->axes(Qt::Vertical).first()->setRange(-visibleRangeY, visibleRangeY);
+
+    if(series->points().size() > MAX_POINTS_IN_SERIES)
+    {
+        series->removePoints(0, DELETING_POINTS_COUNT);
+    }
 }
 
 QChart *CGraphDrawer::getChart()

@@ -51,14 +51,21 @@ void CSignalGenerator::setServer(CServer *newServer)
 
 void CSignalGenerator::onTimerUpdate()
 {
-    timePassed += TIMER_INTERVAL;
-    double signalVal = getSignalAtTime(timePassed);
+    double signalVal;
 
     QByteArray signalData;
     signalData.clear();
-    signalData.append(QByteArray::number(timePassed));
-    signalData.append("|");
-    signalData.append(QByteArray::number(signalVal));
+
+    for(int i = 0; i < TIMER_INTERVAL; i+=5)
+    {
+        signalVal = getSignalAtTime(timePassed + i);
+        signalData.append(QByteArray::number(timePassed + i));
+        signalData.append("|");
+        signalData.append(QByteArray::number(signalVal));
+        signalData.append("|");
+    }
 
     server->sendData(signalData);
+
+    timePassed += TIMER_INTERVAL;
 }

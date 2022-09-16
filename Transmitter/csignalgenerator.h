@@ -6,8 +6,9 @@
 #include <QObject>
 #include <QTimer>
 
-#define TIMER_INTERVAL 100 //Интервал между срабатываниями таймера в миллисекундах
+#define TIMER_INTERVAL 50 //Интервал между срабатываниями таймера в миллисекундах
 #define MILLISECONDS_IN_SECOND 1000
+#define POINTS_INTERVAL 5 //Интервал по оси Х между точками на графике
 
 class CSignalGenerator : public QObject
 {

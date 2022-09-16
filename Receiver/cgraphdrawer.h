@@ -8,6 +8,8 @@
 #include <QTimer>
 
 #define MILLISECONDS_IN_SECOND 1000
+#define MAX_POINTS_IN_SERIES 500
+#define DELETING_POINTS_COUNT 100
 
 class CGraphDrawer
 {

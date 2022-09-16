@@ -23,7 +23,7 @@ std::vector<double> CStringHelper::parseQStringToDoubleVec(QString str, QChar se
 
         ch++;
 
-        if(ch == str.end())
+        if(ch == str.end() && !valueStr.isEmpty())
             values.push_back(valueStr.toDouble());
     }
 
