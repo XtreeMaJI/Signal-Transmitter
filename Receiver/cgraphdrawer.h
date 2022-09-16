@@ -36,6 +36,8 @@ public:
 
     void updateChartRanges();
 
+    void setPenWidth(int width);
+
 private:
     QChart* chart;
     QSplineSeries* series;

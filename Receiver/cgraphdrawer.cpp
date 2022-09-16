@@ -77,3 +77,10 @@ void CGraphDrawer::updateChartRanges()
     chart->axes(Qt::Horizontal).constFirst()->setRange(timeInSeconds-visibleRangeX, timeInSeconds);
     chart->axes(Qt::Vertical).constFirst()->setRange(-visibleRangeY, visibleRangeY);
 }
+
+void CGraphDrawer::setPenWidth(int width)
+{
+    QPen newPen = series->pen();
+    newPen.setWidth(width);
+    series->setPen(newPen);
+}

@@ -46,7 +46,6 @@ void MainWindow::on_timeSlider_sliderMoved(int position)
     graphDrawer->setVisibleRangeX(rangeX);
 }
 
-
 void MainWindow::on_amplSlider_sliderMoved(int position)
 {
     double value = ui->amplSlider->maximum() - position;
@@ -57,7 +56,6 @@ void MainWindow::on_amplSlider_sliderMoved(int position)
     double rangeY = double(value) * double(MAX_AMPL_ON_SCREEN);
     graphDrawer->setVisibleRangeY(rangeY);
 }
-
 
 void MainWindow::on_disconnectBtn_clicked()
 {
@@ -75,5 +73,11 @@ void MainWindow::resizeEvent(QResizeEvent *event)
 
     ui->graphFrame->setGeometry(newFrameGeom);
     chartView->setGeometry(ui->graphFrame->geometry());
+}
+
+
+void MainWindow::on_penSlider_sliderMoved(int position)
+{
+    graphDrawer->setPenWidth(position);
 }
 
