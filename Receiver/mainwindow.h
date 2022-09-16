@@ -36,5 +36,6 @@ private slots:
     void on_penColorRedSlider_sliderMoved(int position);
     void on_penColorGreenSlider_sliderMoved(int position);
     void on_penColorBlueSlider_sliderMoved(int position);
+    void on_amplScrollSlider_sliderMoved(int position);
 };
 #endif // MAINWINDOW_H

@@ -30,22 +30,16 @@ public:
     CGraphDrawer();
     ~CGraphDrawer();
     void init();
-
     void addPointToChart(double time, double value);
-
     void setVisibleRangeX(double rangeX);
     void setVisibleRangeY(double rangeY);
-
     double getVisibleRangeX();
     double getVisibleRangeY();
-
     QChart* getChart();
-
     void updateChartRanges();
-
     void setPenWidth(int width);
-
     void setPenColorComponent(EPenColorComponent comp, int value);
+    void setCentralPointY(double y);
 
 private:
     QChart* chart;
@@ -53,6 +47,8 @@ private:
 
     double visibleRangeX; //Интервал времени в секундах, который виден на графике
     double visibleRangeY;
+
+    double centralPointY;
 };
 
 #endif // CGRAPHDRAWER_H

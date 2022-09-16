@@ -6,6 +6,7 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+
     networkReceiver = new CNetworkReceiver();
     graphDrawer = new CGraphDrawer();
     networkReceiver->setGraphDrawer(graphDrawer);
@@ -19,7 +20,15 @@ MainWindow::MainWindow(QWidget *parent)
 
     double timeSliderVal = (MAX_AMOUNT_SECONDS_ON_SCREEN - graphDrawer->getVisibleRangeX()) * MILLISECONDS_IN_SECOND;
     ui->timeSlider->setValue(timeSliderVal);
+
+    double amplScrollSliderMaxVal = VALUES_OF_AMPL_SLIDER / 2;
+    double amplScrollSliderMinVal = -VALUES_OF_AMPL_SLIDER / 2;
+    double amplScrollSliderVal = 0;
+    ui->amplScrollSlider->setMaximum(amplScrollSliderMaxVal);
+    ui->amplScrollSlider->setMinimum(amplScrollSliderMinVal);
+    ui->amplScrollSlider->setValue(amplScrollSliderVal);
 }
+
 
 MainWindow::~MainWindow()
 {
@@ -29,11 +38,13 @@ MainWindow::~MainWindow()
     delete chartView;
 }
 
+
 void MainWindow::on_connectBtn_clicked()
 {
     QString ip = ui->ipLineEdit->text();
     networkReceiver->connectToServer(ip);
 }
+
 
 void MainWindow::on_timeSlider_sliderMoved(int position)
 {
@@ -46,6 +57,7 @@ void MainWindow::on_timeSlider_sliderMoved(int position)
     graphDrawer->setVisibleRangeX(rangeX);
 }
 
+
 void MainWindow::on_amplSlider_sliderMoved(int position)
 {
     double value = ui->amplSlider->maximum() - position;
@@ -57,10 +69,12 @@ void MainWindow::on_amplSlider_sliderMoved(int position)
     graphDrawer->setVisibleRangeY(rangeY);
 }
 
+
 void MainWindow::on_disconnectBtn_clicked()
 {
     networkReceiver->disconnectFromServer();
 }
+
 
 void MainWindow::resizeEvent(QResizeEvent *event)
 {
@@ -87,15 +101,20 @@ void MainWindow::on_penColorRedSlider_sliderMoved(int position)
     graphDrawer->setPenColorComponent(CGraphDrawer::red, position);
 }
 
-
 void MainWindow::on_penColorGreenSlider_sliderMoved(int position)
 {
     graphDrawer->setPenColorComponent(CGraphDrawer::green, position);
 }
-
 
 void MainWindow::on_penColorBlueSlider_sliderMoved(int position)
 {
     graphDrawer->setPenColorComponent(CGraphDrawer::blue, position);
 }
 
+
+void MainWindow::on_amplScrollSlider_sliderMoved(int position)
+{
+    double value = double(position)/double(VALUES_OF_AMPL_SLIDER/2);
+    double centralPointY = double(value) * double(MAX_AMPL_ON_SCREEN);
+    graphDrawer->setCentralPointY(centralPointY);
+}

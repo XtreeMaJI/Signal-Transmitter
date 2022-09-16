@@ -2,7 +2,8 @@
 
 CGraphDrawer::CGraphDrawer() :
     visibleRangeX(1),
-    visibleRangeY(1)
+    visibleRangeY(1),
+    centralPointY(0)
 {
     chart = new QChart();
     series = new QSplineSeries();
@@ -30,10 +31,9 @@ void CGraphDrawer::addPointToChart(double time, double value)
 {
     //Переводим время в секунды для графика
     double timeInSeconds = time / MILLISECONDS_IN_SECOND;
-
     series->append(timeInSeconds, value);
-    chart->axes(Qt::Horizontal).constFirst()->setRange(timeInSeconds-visibleRangeX, timeInSeconds);
-    chart->axes(Qt::Vertical).constFirst()->setRange(-visibleRangeY, visibleRangeY);
+
+    updateChartRanges();
 
     if(series->points().size() > MAX_POINTS_IN_SERIES)
     {
@@ -75,7 +75,7 @@ void CGraphDrawer::updateChartRanges()
 
     double timeInSeconds = series->points().constLast().x();
     chart->axes(Qt::Horizontal).constFirst()->setRange(timeInSeconds-visibleRangeX, timeInSeconds);
-    chart->axes(Qt::Vertical).constFirst()->setRange(-visibleRangeY, visibleRangeY);
+    chart->axes(Qt::Vertical).constFirst()->setRange(centralPointY-visibleRangeY, centralPointY+visibleRangeY);
 }
 
 void CGraphDrawer::setPenWidth(int width)
@@ -105,4 +105,10 @@ void CGraphDrawer::setPenColorComponent(EPenColorComponent comp, int value)
     }
     newPen.setColor(newColor);
     series->setPen(newPen);
+}
+
+void CGraphDrawer::setCentralPointY(double y)
+{
+    centralPointY = y;
+    updateChartRanges();
 }
