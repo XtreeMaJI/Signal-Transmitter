@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
+#include <QMessageBox>
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -42,7 +44,11 @@ MainWindow::~MainWindow()
 void MainWindow::on_connectBtn_clicked()
 {
     QString ip = ui->ipLineEdit->text();
-    networkReceiver->connectToServer(ip);
+
+    if(networkReceiver->tryConnectToServer(ip))
+        QMessageBox::about(this, "Success", "Connected!");
+    else
+        QMessageBox::about(this, "Error", "Unable to connect");
 }
 
 
@@ -87,7 +93,7 @@ void MainWindow::resizeEvent(QResizeEvent *event)
     graphGeom.setHeight(mainWinGeom.height());
 
     QRect newAmplScrollSliderGeom;
-    newAmplScrollSliderGeom.setX(mainWinGeom.width() - 66);
+    newAmplScrollSliderGeom.setX(mainWinGeom.width() - AMPL_SCROLL_RIGHT_BORDER_INDENT);
     newAmplScrollSliderGeom.setY(0);
     newAmplScrollSliderGeom.setWidth(AMPL_SCROLL_WIDTH);
     newAmplScrollSliderGeom.setHeight(mainWinGeom.height());

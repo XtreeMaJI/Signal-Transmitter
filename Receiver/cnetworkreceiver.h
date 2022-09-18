@@ -7,6 +7,7 @@
 #include "cgraphdrawer.h"
 
 #define SERVER_TCP_PORT 15
+#define CONNETION_WAIT_TIME 2000
 
 class CNetworkReceiver : public QObject
 {
@@ -14,7 +15,7 @@ class CNetworkReceiver : public QObject
 public:
     explicit CNetworkReceiver(QObject *parent = nullptr);
     ~CNetworkReceiver();
-    void connectToServer(QString Ip);
+    bool tryConnectToServer(QString Ip);
     void setGraphDrawer(CGraphDrawer* newGraphDrawer);
 
     void disconnectFromServer();

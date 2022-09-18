@@ -15,13 +15,15 @@ CNetworkReceiver::~CNetworkReceiver()
         delete socket;
 }
 
-void CNetworkReceiver::connectToServer(QString serverIp)
+bool CNetworkReceiver::tryConnectToServer(QString serverIp)
 {
     socket = new QTcpSocket();
     socket->connectToHost(serverIp, SERVER_TCP_PORT);
 
     connect(socket, SIGNAL(readyRead()), this, SLOT(onReadyRead()));
     connect(socket, SIGNAL(disconnected()), this, SLOT(onDisconnect()));
+
+    return socket->waitForConnected(CONNETION_WAIT_TIME);
 }
 
 void CNetworkReceiver::setGraphDrawer(CGraphDrawer *newGraphDrawer)
